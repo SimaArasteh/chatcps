@@ -1,0 +1,28 @@
+module0: navigation
+module1: File Management / Data Storage 
+module2: Navigation
+module3: sensor driver/ hardware interface
+module4: sensor driver/ hardware interface
+module5: navigation
+module6: controller /not sure
+module 7:  Mathematical Utilities and Signal Processing /not sure
+module 8: System Control and Calibration /not sure
+module 9: not sure
+module 10: System Performance and Task Scheduling Management
+module 11: communication / not sure
+module 12: others
+module 13: Navigation
+module 14: Safety Check, Navigation
+module 15: communication 
+module 16: communication
+module 17: controller
+module 18: communication
+module 19: others
+module 20: Navigation/safety check
+module 21: others
+module 22 : not sure
+module 23: not sure
+module 24: not sure
+module 25: not sure
+module 26: communication/controller.
+ 
