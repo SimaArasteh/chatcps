@@ -1,0 +1,5 @@
+name: euinv
+channels:
+  - defaults
+  - conda-forge
+prefix: /nas/home/jandaghi/anaconda2/envs/euinv
