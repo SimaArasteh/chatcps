@@ -6,9 +6,9 @@ output_type: multiple_choice
 training_split: train
 validation_split: train
 test_split: test
-doc_to_text: "{{knowledge}}\n{{prompt_instruction}}\nAnswer:"
-doc_to_target: "{{['Navigation', 'Communication', 'File system management', 'Controller', 'Safety check'][label]}}"
-doc_to_choice: ["Navigation", "Communication", "File system management", "Controller", "Safety check"]
+doc_to_text: "{{knowledge}}\n{{instruction}}\nAnswer:"
+doc_to_target: "{{options.index(label)}}"
+doc_to_choice: "{{options}}"
 should_decontaminate: False
 #doc_to_decontamination_query: passage
 metric_list:

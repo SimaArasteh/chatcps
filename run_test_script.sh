@@ -6,4 +6,4 @@ do
     do
         lm_eval --model hf --model_args pretrained="${llm},trust_remote_code=True,dtype=float16" --tasks $mtask --num_fewshot 0  --output_path cma_results --log_samples --batch_size auto --device cuda:0
     done
-don
+done
