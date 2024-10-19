@@ -1,0 +1,17 @@
+task: sw-modular
+dataset_path: lm_eval/tasks/sw/module_ds.py
+dataset_name: swm
+dataset_kwargs: {'trust_remote_code': True}
+output_type: multiple_choice
+training_split: train
+validation_split: train
+test_split: test
+doc_to_text: "{{knowledge}}\n{{prompt_instruction}}\nAnswer:"
+doc_to_target: "{{['Navigation', 'Communication', 'File system management', 'Controller', 'Safety check'][label]}}"
+doc_to_choice: ["Navigation", "Communication", "File system management", "Controller", "Safety check"]
+should_decontaminate: False
+#doc_to_decontamination_query: passage
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true

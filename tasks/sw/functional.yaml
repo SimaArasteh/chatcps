@@ -1,0 +1,17 @@
+task: sw-functional
+dataset_path: lm_eval/tasks/sw/function_ds.py
+dataset_name: swf
+dataset_kwargs: {'trust_remote_code': True}
+output_type: multiple_choice
+training_split: train
+validation_split: train
+test_split: test
+doc_to_text: "Question: Is the following function doing navigation?\n {{function_body}}\nAnswer:"
+doc_to_target: "{{['Yes', 'No'][label]}}"
+doc_to_choice: ["no", "yes"]
+should_decontaminate: False
+#doc_to_decontamination_query: passage
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
