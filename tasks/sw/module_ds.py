@@ -51,19 +51,16 @@ class ModuleDataset(datasets.GeneratorBasedBuilder):
         
         np_size=np.array(funcs_size)
         
-        # currently I am returning top 1 functions
-        top_inds = np.argsort(np_size)[:2]
-        print('This is top inds', top_inds)
+        # currently I am returning top 20 functions
+        top_inds = np.argsort(np_size)[:20]
+        print('This is top functions indexes and their sizes', top_inds, '| ', np_size[:top_inds])
         
         funcs_joined = '\n'.join([funcs[i] for i in top_inds])
         return funcs_joined
-        
-        
+      
 
     def _generate_examples(self, filepath):
-        """This function returns the examples in the raw (text) form."""
-
-        
+        """This function returns the examples in the raw (text) form."""       
         knowledge="""Here is the definition of module categories category in a softwared system. 
             Navigation module: contains functions that calculate the position of the vehicle \n
             Communication module: contains functions that implement any communication protocols such as uart, spi or any sign of packet or message sending.\n
@@ -71,8 +68,9 @@ class ModuleDataset(datasets.GeneratorBasedBuilder):
             Controller: contains functions that control the vehicle based on the position and parameters.\n
             Safety check: contains functions that check if the activity is safe to do.\n
             """
-        prompt_instruction="""I will give you a module that contains decompiled functions from a control system firmware such as copter. Tell me what is the category of this module.""" 
-        options=["Navigation, Communication", "File system management", "Controller", "Safety check"]
+        prompt_instruction="""II will give you a module that contains decompiled functions from a control system firmware such as copter. Tell me what is the category of this module.decide based on the majority of functions."""
+        
+        options=["Navigation", "Communication", "File system management", "Controller", "Safety check"]
             
             
         module_folders = [f.path for f in os.scandir(filepath) if f.is_dir()]
@@ -87,7 +85,7 @@ class ModuleDataset(datasets.GeneratorBasedBuilder):
             yield id_, {
                 "module": module_name,
                 "context": selected_context, #TODO(@CMA what is a good amount of context for prompts?)
-                "knowledge": knowledge,
+                "knowledge": "",
                 "instruction": prompt_instruction,
                 "options":options,
                 "id": id_,
